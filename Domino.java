@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Domino {
 
-    static int [][] faces = new int[4][5] ;
+    static int [][] faces = new int[4][3] ;
     
     Domino(int[][] faces){
         this.faces = faces;
@@ -27,7 +27,7 @@ public class Domino {
     }
 
     private static void genDuoDomino(Domino[] sac, int place){
-        int[][] f = new int[4][5];
+        int[][] f = new int[4][3];
         Domino a = new Domino(f); //on crée les deux dominos qui seront des paires avec un seul coté identique
         Domino b = new Domino(f);
         for(int i=0; i<faces.length-1; i++){
