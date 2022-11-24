@@ -26,7 +26,7 @@ public class Domino {
 
             for(int i = 0; i<faces.length; i++){
                 for(int j=0; j<faces[i].length; j++){
-                f[i][j] = (new Random()).nextInt(10);
+
                 }
             }
             sac[cote] = a;
@@ -37,8 +37,24 @@ public class Domino {
         return sac;
     }
 
-    private void genDuoDomino(ArrayList<Domino> sac){
+    private void genDuoDomino(Domino[] sac){
+        int[][] f = new int[4][5];
+        Domino a = new Domino(f);
+        Domino b = new Domino(f);
+        for(int i=0; i<faces.length-1; i++){
+            for(int j=0; j<faces[i].length; j++){
+                a.faces[i][j]= (new Random()).nextInt(10);
+                b.faces[i][j] = (new Random()).nextInt(10);
+            }
+        }
+        for(int k=0; k<faces[faces.length].length; k++){
+            int rd = (new Random()).nextInt(10);
+            a.faces[faces.length][k] = rd;
+            b.faces[faces.length][k] = rd;
+        }
 
+        
+                
     }
-
+    
 }
