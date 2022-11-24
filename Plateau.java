@@ -6,7 +6,7 @@ public class Plateau {
 
     Plateau () {
         this.plateau = new Domino[40][40] ; 
-        this.sac = Domino.genSac(40) ; 
+        this.sac = Domino.genSac(40) ; //à cause de la fonction genDuoDomino dans la classe Domino, on ne peut donner qu'une valeur paire à genSac
     }
 
     public Domino pioche () {

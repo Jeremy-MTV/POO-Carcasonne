@@ -13,17 +13,21 @@ public class Domino {
     }
 
 
-    public static Domino[] genSac(int nb){
-        Domino[] sac = new Domino[nb]; //on crée le sac de domino avec le nombre de domino choisi.
-        int place = 0; //variable qui permettra de placer les dominos dans le sac, la variable est utilisé par genDuoDomino
-        while(nb != 0){
-            if(place <= nb){
-                genDuoDomino(sac, place);
-                place++; //on incrémente place de 1
-                nb = nb-2; //on enlève 2 à nb car on vient de créer et insérer deux dominos dans le sac
+    public static Domino[] genSac(int nb){ 
+        if(nb%2 == 0){ //nb devra forcément être paire à cause de genDuoDomino
+            Domino[] sac = new Domino[nb]; //on crée le sac de domino avec le nombre de domino choisi.
+            int place = 0; //variable qui permettra de placer les dominos dans le sac, la variable est utilisé par genDuoDomino
+            while(nb != 0){
+                if(place <= nb){
+                    genDuoDomino(sac, place);
+                    place++; //on incrémente place de 1
+                    nb = nb-2; //on enlève 2 à nb car on vient de créer et insérer deux dominos dans le sac
+                }
             }
+            return sac;
         }
-        return sac;
+        System.out.println("Veuillez saisir donner une valeur positive");
+        return null;
     }
 
     private static void genDuoDomino(Domino[] sac, int place){
