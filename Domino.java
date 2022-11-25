@@ -26,7 +26,7 @@ public class Domino {
             }
             return sac;
         }
-        System.out.println("Veuillez saisir donner une valeur positive");
+        System.out.println("Veuillez saisir une valeur paire");
         return null;
     }
 
@@ -41,10 +41,10 @@ public class Domino {
             }
         }
 
-        for(int k=0; k<faces[faces.length].length; k++){ //on s'occupe du même coté des deux dominos qui, par défaut, est le dernier coté
+        for(int k=0; k<faces[4].length; k++){ //on s'occupe du même coté des deux dominos qui, par défaut, est le dernier coté
             int rd = (new Random()).nextInt(10);
-            a.faces[faces.length][k] = rd; //ici, c'est la création du coté qui sera identique pour les deux dominos
-            b.faces[faces.length][k] = rd;
+            a.faces[4][k] = rd; //ici, c'est la création du coté qui sera identique pour les deux dominos
+            b.faces[4][k] = rd;
         }
 
         if(sac[place+1] != null){ //on inspecte que sac[place+1] existe bien et que ce n'est pas en dehors de la taille du sac
