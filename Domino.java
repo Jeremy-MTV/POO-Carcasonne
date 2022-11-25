@@ -20,7 +20,7 @@ public class Domino {
             while(nb != 0){
                 if(place <= nb){
                     genDuoDomino(sac, place);
-                    place++; //on incrémente place de 1
+                    place = place+2; //on incrémente place de 2
                     nb = nb-2; //on enlève 2 à nb car on vient de créer et insérer deux dominos dans le sac
                 }
             }
