@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Plateau {
     private Domino [][] plateau ; 
-    private Domino [] sac ;
+    private Domino [] sac = new Domino[40];
 
     Plateau () {
         this.plateau = new Domino[40][40] ; 
-        this.sac = Domino.genSac(40) ; //à cause de la fonction genDuoDomino dans la classe Domino, on ne peut donner qu'une valeur paire à genSac
+        this.sac = Domino.genSac() ; //genSac va générer 40 dominos par defaut qui seront dans le sac
     }
 
     public Domino pioche () {

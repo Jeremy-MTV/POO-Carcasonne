@@ -9,12 +9,20 @@ public class Domino {
     }
     
     public void tourner(String sens){ //On donnera en paramètre le sens de la rotation, cad gauche ou droite
-        //on va echanger les faces entre elle pour pouvoir tourner dans un sens ou un autre. 
-    }
+        sens = sens.toLowerCase();
+        if(sens == "droite"){
+            //on va echanger les faces entre elle pour pouvoir tourner dans un sens ou un autre. 
+                
+        }else if(sens == "gauche"){
+
+        }else{
+            System.out.println("Veuillez écrire gauche ou droite");
+        }
+    } 
 
 
-    public static Domino[] genSac(int nb){ 
-        if(nb%2 == 0){ //nb devra forcément être paire à cause de genDuoDomino
+    public static Domino[] genSac(){ 
+            int nb = 40; //nombre de Domino par defaut
             Domino[] sac = new Domino[nb]; //on crée le sac de domino avec le nombre de domino choisi.
             int place = 0; //variable qui permettra de placer les dominos dans le sac, la variable est utilisé par genDuoDomino
             while(nb != 0){
@@ -25,9 +33,6 @@ public class Domino {
                 }
             }
             return sac;
-        }
-        System.out.println("Veuillez saisir une valeur paire");
-        return null;
     }
 
     private static void genDuoDomino(Domino[] sac, int place){
@@ -47,12 +52,10 @@ public class Domino {
             b.faces[4][k] = rd;
         }
 
-        if(sac[place+1] != null){ //on inspecte que sac[place+1] existe bien et que ce n'est pas en dehors de la taille du sac
-            sac[place] = a; //Au lieu de sac[place+1] != null, j'hesite à mettre "if(place+1 <= sac.length)"
+        if(place+1 <= sac.length){ //on inspecte que sac[place+1] existe bien et que ce n'est pas en dehors de la taille du sac
+            sac[place] = a; 
             sac[place+1] = b;
         }
-        
-                
     }
     
 }
