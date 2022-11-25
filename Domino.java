@@ -8,8 +8,8 @@ public class Domino {
         this.faces = faces;
     }
     
-    public void tourner(){
-
+    public void tourner(String sens){ //On donnera en paramètre le sens de la rotation, cad gauche ou droite
+        //on va echanger les faces entre elle pour pouvoir tourner dans un sens ou un autre. 
     }
 
 
