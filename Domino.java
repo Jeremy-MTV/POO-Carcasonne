@@ -14,13 +14,13 @@ public class Domino {
         if(sens == "droite"){
             //on va echanger les faces entre elle pour pouvoir tourner dans un sens ou un autre. 
             for(int i=3; i>=1; i--){
-                acc = this.faces[i];
+                acc = this.faces[i]; //on avance de la face 4 à la face 1, on inverse la valeur de 4 et 3, puis de 3 et 2, puis de 2 et 1, puis de 1 et 4
                 this.faces[i] = this.faces[i-1];
                 this.faces[i-1] = acc;
             }
         }else if(sens == "gauche"){
             for(int j=0; j<=2; j++){
-                acc = this.faces[j];
+                acc = this.faces[j];//le sens inverse
                 this.faces[j] = this.faces[j+1];
                 this.faces[j+1] = acc;
             }
@@ -43,6 +43,13 @@ public class Domino {
             }
             return sac;
     }
+
+
+    private Domino[] melanger(){
+        //cette fonction va permettre de melanger les dominos dans le sac afin de ne pas avoir les dominos duo qui se suivent.
+        return null;
+    }
+
 
     private static void genDuoDomino(Domino[] sac, int place){
         int[][] f = new int[4][3];
