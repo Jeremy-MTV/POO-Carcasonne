@@ -10,11 +10,20 @@ public class Domino {
     
     public void tourner(String sens){ //On donnera en paramètre le sens de la rotation, cad gauche ou droite
         sens = sens.toLowerCase();
+        int[] acc = new int[3];
         if(sens == "droite"){
             //on va echanger les faces entre elle pour pouvoir tourner dans un sens ou un autre. 
-                
+            for(int i=3; i>=1; i--){
+                acc = this.faces[i];
+                this.faces[i] = this.faces[i-1];
+                this.faces[i-1] = acc;
+            }
         }else if(sens == "gauche"){
-
+            for(int j=0; j<=2; j++){
+                acc = this.faces[j];
+                this.faces[j] = this.faces[j+1];
+                this.faces[j+1] = acc;
+            }
         }else{
             System.out.println("Veuillez écrire gauche ou droite");
         }
