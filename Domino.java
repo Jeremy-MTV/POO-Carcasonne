@@ -18,7 +18,7 @@ public class Domino {
             Domino[] sac = new Domino[nb]; //on crée le sac de domino avec le nombre de domino choisi.
             int place = 0; //variable qui permettra de placer les dominos dans le sac, la variable est utilisé par genDuoDomino
             while(nb != 0){
-                if(place <= nb){
+                if(place <= sac.length){
                     genDuoDomino(sac, place);
                     place = place+2; //on incrémente place de 2
                     nb = nb-2; //on enlève 2 à nb car on vient de créer et insérer deux dominos dans le sac
