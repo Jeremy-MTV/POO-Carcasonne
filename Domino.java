@@ -30,6 +30,7 @@ public class Domino {
     } 
 
 
+
     public static Domino[] genSac(){ 
             int nb = 40; //nombre de Domino par defaut
             Domino[] sac = new Domino[nb]; //on crée le sac de domino avec le nombre de domino choisi.
