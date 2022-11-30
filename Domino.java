@@ -2,8 +2,10 @@ import java.util.*;
 
 public class Domino {
 
-    static int [][] faces = new int[4][3] ;
+    int [][] faces = new int[4][3] ;
     
+
+
     Domino(int[][] faces){
         this.faces = faces;
     }
@@ -28,6 +30,10 @@ public class Domino {
             System.out.println("Veuillez écrire gauche ou droite");
         }
     } 
+
+    public int[][] getFaces() {
+        return faces;
+    }
 
     public String toString (int i) {
         return "" ; 
@@ -54,27 +60,27 @@ public class Domino {
     }
 
 
-    private static void genDuoDomino(Domino[] sac, int place){
-        int[][] f = new int[4][3];
-        Domino a = new Domino(f); //on crée les deux dominos qui seront des paires avec un seul coté identique
-        Domino b = new Domino(f);
-        for(int i=0; i<faces.length-1; i++){
-            for(int j=0; j<faces[i].length; j++){
-                a.faces[i][j]= (new Random()).nextInt(10); //on créé les valeurs des autres cotés qui ne seront pas forcément identique 
-                b.faces[i][j] = (new Random()).nextInt(10);
-            }
-        }
+    // private static void genDuoDomino(Domino[] sac, int place){
+    //     int[][] f = new int[4][3];
+    //     Domino a = new Domino(f); //on crée les deux dominos qui seront des paires avec un seul coté identique
+    //     Domino b = new Domino(f);
+    //     for(int i=0; i<faces.length-1; i++){
+    //         for(int j=0; j<faces[i].length; j++){
+    //             a.faces[i][j]= (new Random()).nextInt(10); //on créé les valeurs des autres cotés qui ne seront pas forcément identique 
+    //             b.faces[i][j] = (new Random()).nextInt(10);
+    //         }
+    //     }
 
-        for(int k=0; k<faces[4].length; k++){ //on s'occupe du même coté des deux dominos qui, par défaut, est le dernier coté
-            int rd = (new Random()).nextInt(10);
-            a.faces[4][k] = rd; //ici, c'est la création du coté qui sera identique pour les deux dominos
-            b.faces[4][k] = rd;
-        }
+    //     for(int k=0; k<faces[4].length; k++){ //on s'occupe du même coté des deux dominos qui, par défaut, est le dernier coté
+    //         int rd = (new Random()).nextInt(10);
+    //         a.faces[4][k] = rd; //ici, c'est la création du coté qui sera identique pour les deux dominos
+    //         b.faces[4][k] = rd;
+    //     }
 
-        if(place+1 <= sac.length){ //on inspecte que sac[place+1] existe bien et que ce n'est pas en dehors de la taille du sac
-            sac[place] = a; 
-            sac[place+1] = b;
-        }
-    }
+    //     if(place+1 <= sac.length){ //on inspecte que sac[place+1] existe bien et que ce n'est pas en dehors de la taille du sac
+    //         sac[place] = a; 
+    //         sac[place+1] = b;
+    //     }
+    // }
     
 }
