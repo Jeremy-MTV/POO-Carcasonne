@@ -2,8 +2,10 @@ import java.util.*;
 
 public class Domino {
 
-    static int [][] faces = new int[4][3] ;
+    int [][] faces = new int[4][3] ;
     
+
+
     Domino(int[][] faces){
         this.faces = faces;
     }
@@ -29,7 +31,13 @@ public class Domino {
         }
     } 
 
+    public int[][] getFaces() {
+        return faces;
+    }
 
+    public String toString (int i) {
+        return "" ; 
+    }
 
     public static Domino[] genSac(){ 
             int nb = 40; //nombre de Domino par defaut
