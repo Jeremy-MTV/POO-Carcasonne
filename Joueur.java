@@ -1,20 +1,29 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import java.util.*;
+public abstract class Joueur{
+    private Plateau plateau;
+    private ArrayList<Domino> sac;
+    private boolean apioche, joue;
+    private int nbPoint;
+    private int id ; 
 
-public class Joueur{
-    boolean apioche, joue;
-    ArrayList<Domino> sac;
-    int nbPoint;
-
-    Plateau plateau;
-
-    public Domino choisir(int pos){
-        return null;
+    public Domino choisir(int pos){// oki
+        if (pos > sac.size()) return null ; 
+        return sac.get(pos-1) ; 
     }
 
     public String toString(){
-        return null;
+        String res = "Voici les pieces que vous possedez Joueur "+id+" : \n" ;
+        Iterator<Domino> dominos = sac.iterator() ; 
+        for (int i = 0 ; i<4 ; i++) {
+            while(dominos.hasNext()) {
+                res+=dominos.next().toString(i) + " " ; 
+            }
+            res+="\n" ; 
+            dominos = sac.iterator() ; 
+        }
+        return res ; 
     }
 
     public void piocheSac(){
@@ -25,8 +34,6 @@ public class Joueur{
 
     }
 
-    public void play(){
-
-    }
+    public abstract void play() ; 
 
 }

@@ -29,7 +29,9 @@ public class Domino {
         }
     } 
 
-
+    public String toString (int i) {
+        return "" ; 
+    }
 
     public static Domino[] genSac(){ 
             int nb = 40; //nombre de Domino par defaut
