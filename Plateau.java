@@ -10,11 +10,20 @@ public class Plateau {
     }
 
     public Domino pioche () {
-        int pos = (new Random()).nextInt(40) ; 
+        int pos = (new Random()).nextInt(lastDomino(0, sac.length)+1) ; 
         Domino pioche = sac[pos] ; 
         sac[pos] = null ; 
         arrange(sac, pos);
         return pioche ;
+    }
+
+    private int lastDomino (int l , int r ) {
+        int mid = (l+r)/2 ; 
+        if (sac[mid] == null) {
+            return lastDomino(l, mid-1 ) ;
+        }   
+        if (mid+1 > sac.length || sac[mid+1] == null) return mid ;   
+        return lastDomino(mid+1, r) ; 
     }
 
     private void arrange (Domino [] tab , int pos) {
