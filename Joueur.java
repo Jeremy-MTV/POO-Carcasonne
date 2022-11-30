@@ -13,7 +13,7 @@ public abstract class Joueur{
         return sac.get(pos-1) ; 
     }
 
-    public String toString(){
+    public String toString(){// oki not tested
         String res = "Voici les pieces que vous possedez Joueur "+id+" : \n" ;
         Iterator<Domino> dominos = sac.iterator() ; 
         for (int i = 0 ; i<4 ; i++) {
@@ -26,11 +26,11 @@ public abstract class Joueur{
         return res ; 
     }
 
-    public void piocheSac(){
-
+    public void piocheSac(){// oki
+        sac.add(plateau.pioche()) ; 
     }
 
-    public void poser(int x, int y, Domino dom){
+    public void poser(int x, int y, Domino dom){   
 
     }
 
