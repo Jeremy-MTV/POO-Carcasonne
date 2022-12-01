@@ -17,7 +17,7 @@ public class Plateau {
         return pioche ;
     }
 
-    private int lastDomino (int l , int r ) {
+    private int lastDomino (int l , int r ) {// oki
         int mid = (l+r)/2 ; 
         if (sac[mid] == null) {
             return lastDomino(l, mid-1 ) ;
@@ -26,17 +26,17 @@ public class Plateau {
         return lastDomino(mid+1, r) ; 
     }
 
-    private void arrange (Domino [] tab , int pos) {
+    private void arrange (Domino [] tab , int pos) {// oki
         for (int i = pos ; i<tab.length-1 ; i++) {
             tab[i] = tab[i+1] ; 
         }
     }
 
-    public boolean isEmptySac () {
+    public boolean isEmptySac () {// oki
         return sac[0] == null ; 
     }
 
-    public boolean finDeGame () {
+    public boolean finDeGame () {// oki
         return isEmptySac() ; 
     }
 
@@ -44,7 +44,7 @@ public class Plateau {
         return y>=0 && y < plateau.length && x >0 && x < plateau[0].length ; 
     }    
 
-    public boolean peutPoser (int x , int y , Domino dom) {// oki
+    public boolean peutPoser (int x , int y , Domino dom) {// oki not tested
 
         if (!dansLimites(x, y)) return false ; 
         boolean [] adja = {false , false , false , false} ; 
@@ -84,7 +84,7 @@ public class Plateau {
 
     }
 
-    private boolean possible (Domino domJ , Domino domP , int face) {//oki
+    private boolean possible (Domino domJ , Domino domP , int face) {// oki not tested
         int [][] facesJ = domJ.getFaces() ; 
         int [][] facesP = domP.getFaces() ; 
         for (int i = 0 ; i<facesJ.length ; i++) {
@@ -93,7 +93,7 @@ public class Plateau {
         return true ; 
     }
     
-    public int nbPtsScored (int x , int y , Domino dom) {// oki
+    public int nbPtsScored (int x , int y , Domino dom) {// oki not tested
         int total = 0 ; 
         for (int i = 0; i < 2; i++) {
             if (dansLimites(x, y-1+2*i) && plateau[x][y-1+2*i] != null) {
@@ -107,7 +107,7 @@ public class Plateau {
         return total ; 
     }
 
-    private int sommeTab (Domino dom , int i) {
+    private int sommeTab (Domino dom , int i) {// oki
         int acc = 0 ; 
         for (int x : dom.getFaces()[i]) {
             acc+=x ; 

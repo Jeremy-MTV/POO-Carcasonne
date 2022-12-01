@@ -5,8 +5,14 @@ public abstract class Joueur{
     private Plateau plateau;
     private ArrayList<Domino> sac;
     private boolean apioche, joue;
-    private int nbPoint;
+    private int nbPoints;
     private int id ; 
+
+    Joueur (Plateau plateau , int id) {
+        this.plateau = plateau ; 
+        sac = new ArrayList<Domino>() ; 
+        this.id = id ; 
+    }
 
     public Domino choisir(int pos){// oki
         if (pos > sac.size()) return null ; 
@@ -28,10 +34,26 @@ public abstract class Joueur{
 
     public void piocheSac(){// oki
         sac.add(plateau.pioche()) ; 
+        apioche = true ; 
     }
 
-    public void poser(int x, int y, Domino dom){   
+    private void retirer (Domino dom) {// oki
+        sac.remove(dom) ; 
+    }
 
+    public void poser(int x, int y, Domino dom){// oki   
+        if (plateau.peutPoser(x, y, dom)) {
+            retirer(dom);
+            nbPoints += plateau.nbPtsScored(x, y, dom) ; 
+        }
+    }
+
+    public int getNbPoints () {// oki
+        return nbPoints ; 
+    }
+    
+    public int getId () {// oki
+        return id ; 
     }
 
     public abstract void play() ; 
