@@ -4,7 +4,7 @@ import java.util.Iterator;
 public abstract class Joueur{
     private Plateau plateau;
     private ArrayList<Domino> sac;
-    private boolean apioche, joue;
+    private boolean apioche, abandonne;
     private int nbPoints;
     private int id ; 
 
@@ -33,8 +33,10 @@ public abstract class Joueur{
     }
 
     public void piocheSac(){// oki
-        sac.add(plateau.pioche()) ; 
-        apioche = true ; 
+        if (!apioche) {
+            sac.add(plateau.pioche()) ; 
+            apioche = true ;
+        }
     }
 
     private void retirer (Domino dom) {// oki
@@ -43,6 +45,7 @@ public abstract class Joueur{
 
     public void poser(int x, int y, Domino dom){// oki   
         if (plateau.peutPoser(x, y, dom)) {
+            plateau.pose(x, y, dom);
             retirer(dom);
             nbPoints += plateau.nbPtsScored(x, y, dom) ; 
         }
@@ -54,6 +57,14 @@ public abstract class Joueur{
     
     public int getId () {// oki
         return id ; 
+    }
+
+    public boolean getAbandonne () {
+        return abandonne ; 
+    }
+
+    public void abandonne () {
+        abandonne = true ; 
     }
 
     public abstract void play() ; 
