@@ -42,20 +42,17 @@ public class Plateau {
 
     private boolean dansLimites (int x , int y ){// oki
         return y>=0 && y < plateau.length && x >0 && x < plateau[0].length ; 
-    }    
-
+    }
+    
     public boolean peutPoser (int x , int y , Domino dom) {// oki
-
         if (!dansLimites(x, y)) return false ; 
         boolean [] adja = {false , false , false , false} ; 
         //               haut(0)  droite(1) bas(2) gauche(3)
-        int nbNulls = 0 ; 
+        int nbNulls = 0 ;
 
         for (int i = 0; i < 2; i++) {
-
             if (dansLimites(x, y-1+2*i)) { // i = 0 (x,y-1) et i = 1 (x,y+1)
                 // verifie haut et bas 
-
                 if (plateau[x][y-1+2*i] == null) {
                     nbNulls++ ;
                     adja[2*i] = true ; 
@@ -66,9 +63,8 @@ public class Plateau {
                 adja[2*i] = true ; 
             }
             
-            if (!dansLimites(x+1-2*i, y)) { // i = 0 (x+1,y) et i = 1 (x-1,y)
+            if (dansLimites(x+1-2*i, y)) { // i = 0 (x+1,y) et i = 1 (x-1,y)
                 // verifie gauche et droite
-
                 if (plateau[x+1-2*i][y] == null) {
                     nbNulls++ ; 
                     adja[2*i+1] = true ; 
@@ -79,9 +75,7 @@ public class Plateau {
                 adja[2*i+1] = true ;  
             }
         }
-
         return adja[0] && adja[1] && adja[2] && adja[3] && nbNulls != 4 ; 
-
     }
 
     private boolean possible (Domino domJ , Domino domP , int face) {//oki
@@ -92,7 +86,11 @@ public class Plateau {
         }
         return true ; 
     }
-    
+
+    public void pose (int x , int y , Domino dom) {
+        plateau[y][x] = dom ; 
+    }
+
     public int nbPtsScored (int x , int y , Domino dom) {// oki
         int total = 0 ; 
         for (int i = 0; i < 2; i++) {
