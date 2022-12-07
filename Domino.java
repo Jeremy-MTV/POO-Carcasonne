@@ -45,6 +45,14 @@ public class Domino {
 
     private static void melanger(Domino[] sac){
         //cette fonction va permettre de melanger les dominos dans le sac afin de ne pas avoir les dominos duo qui se suivent.
+        Domino acc;
+        for(int j=0; j<3; j++){
+            for(int i=0; i<sac.length-1; i++){
+                acc = sac[i];
+                sac[i] = sac[i+1];
+                sac[i + 1] = acc;
+            }
+        }
     }
 
     private static void genDuoDomino(Domino[] sac, int place){// oki
@@ -57,7 +65,7 @@ public class Domino {
 
         for(int i=0; i<4; i++){
             for(int j=0; j<3; j++){
-                a.faces[i][j] = random.nextInt(10); //on créé les valeurs des autres cotés qui ne seront pas forcément identique 
+                a.faces[i][j] = random.nextInt(10); //on créé les valeurs des autres cotés qui ne seront pas forcément identique                                
                 b.faces[i][j] = random.nextInt(10);
             }
         }
@@ -73,7 +81,7 @@ public class Domino {
     
     public String toString (int i) { //ligne par ligne
         //pour i=1 ou 5, espace à 1 et 4
-
+        return null;
     }
 
     public static String toStringVide () {// oki
