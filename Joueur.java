@@ -51,6 +51,18 @@ public abstract class Joueur{
         }
     }
 
+    public Plateau getPlateau() {// oki
+        return plateau;
+    }
+
+    public ArrayList<Domino> getSac() {// oki
+        return sac;
+    }
+
+    public boolean getApioche() {// oki
+        return apioche;
+    }
+
     public int getNbPoints () {// oki
         return nbPoints ; 
     }
@@ -59,7 +71,7 @@ public abstract class Joueur{
         return id ; 
     }
 
-    public boolean getAbandonne () {
+    public boolean getAbandonne () {// oki
         return abandonne ; 
     }
 
