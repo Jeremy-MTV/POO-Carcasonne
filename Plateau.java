@@ -2,10 +2,12 @@ import java.util.Random;
 
 public class Plateau {
     private Domino[][] plateau ; 
+    private boolean[] dominoPresentInLine ; 
     private Domino [] sac ;
 
     Plateau () {
-        this.plateau = new Domino[40][40] ; 
+        this.plateau = new Domino[80][80] ; 
+        dominoPresentInLine = new boolean[80] ; 
         this.sac = Domino.genSac() ;
     }
 
@@ -89,6 +91,7 @@ public class Plateau {
 
     public void pose (int x , int y , Domino dom) {
         plateau[y][x] = dom ; 
+        dominoPresentInLine[y] = true ; 
     }
 
     public int nbPtsScored (int x , int y , Domino dom) {// fonctioon a deplacer dans domino
@@ -114,6 +117,27 @@ public class Plateau {
     }
 
     public String toString () {
-        return "" ; 
+        String res = "" ; 
+        for (int i = 0 ; i<dominoPresentInLine.length ; i++) {
+            if (dominoPresentInLine[i]) {
+                res+= printLine(i) ; 
+            }
+        }
+        return res ; 
+    }
+
+    private String printLine (int line) {
+        String res = "" ; 
+        for (int i = 0 ; i<4 ; i++) {
+            for (int k = 0 ; k<plateau[line].length ; k++) {
+                if (plateau[line][k] == null) {
+                    res+= Domino.toStringVide() ; 
+                }else{
+                    res+= plateau[line][k].toString(i) ; 
+                }
+            }
+            res+="\n" ; 
+        }
+        return res ; 
     }
 }

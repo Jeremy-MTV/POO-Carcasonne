@@ -59,6 +59,10 @@ public class Domino {
         return null;
     }
 
+    public static String toStringVide() {
+        return null;
+    }
+
 
     // private static void genDuoDomino(Domino[] sac, int place){
     //     int[][] f = new int[4][3];
