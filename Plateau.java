@@ -78,7 +78,7 @@ public class Plateau {
         return adja[0] && adja[1] && adja[2] && adja[3] && nbNulls != 4 ; 
     }
 
-    private boolean possible (Domino domJ , Domino domP , int face) {// oki not tested
+    private boolean possible (Domino domJ , Domino domP , int face) {// fonction a deplacer dans domino
         int [][] facesJ = domJ.getFaces() ; 
         int [][] facesP = domP.getFaces() ; 
         for (int i = 0 ; i<facesJ.length ; i++) {
@@ -91,7 +91,7 @@ public class Plateau {
         plateau[y][x] = dom ; 
     }
 
-    public int nbPtsScored (int x , int y , Domino dom) {// oki
+    public int nbPtsScored (int x , int y , Domino dom) {// fonctioon a deplacer dans domino
         int total = 0 ; 
         for (int i = 0; i < 2; i++) {
             if (dansLimites(x, y-1+2*i) && plateau[x][y-1+2*i] != null) {
@@ -105,7 +105,7 @@ public class Plateau {
         return total ; 
     }
 
-    private int sommeTab (Domino dom , int i) {// oki
+    private int sommeTab (Domino dom , int i) {// fonction a deplacer dans domino
         int acc = 0 ; 
         for (int x : dom.getFaces()[i]) {
             acc+=x ; 
