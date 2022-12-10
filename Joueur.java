@@ -15,8 +15,12 @@ public abstract class Joueur{
         if (plateau.peutPoser(x, y, domino)) {
             plateau.pose(x, y, domino);
             domino = null ; 
-            nbPoints += plateau.nbPtsScored(x, y, domino) ; 
+            addPoints(plateau.nbPtsScored(x, y, domino)) ; // a revoir  
         }
+    }
+
+    public void addPoints (int pts) {
+        nbPoints+= pts ; 
     }
 
     public Plateau getPlateau() {// oki

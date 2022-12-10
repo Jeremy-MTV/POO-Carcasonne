@@ -2,13 +2,21 @@ import java.util.Random;
 
 public class Plateau {
     private Domino[][] plateau ; 
-    private boolean[] dominoPresentInLine ; 
+    private boolean[] ligneNonVide ; 
     private Domino [] sac ;
 
     Plateau () {
         this.plateau = new Domino[80][80] ; 
-        dominoPresentInLine = new boolean[80] ; 
+        ligneNonVide = new boolean[80] ; 
         this.sac = Domino.genSac() ;
+    }
+
+    public boolean[] getligneNonVide() {
+        return this.ligneNonVide ; 
+    }
+
+    public Domino[][] getPlateau () {
+        return plateau ; 
     }
 
     public Domino pioche () {
@@ -34,16 +42,16 @@ public class Plateau {
         }
     }
 
-    public boolean isEmptySac () {// oki
+    public boolean finDeGame () {// oki
         return sac[0] == null ; 
     }
 
-    public boolean finDeGame () {// oki
-        return isEmptySac() ; 
+    private boolean dansLimites (int x , int y ){// oki
+        return y>=0 && y < plateau.length && x >0 && x < plateau[y].length ; 
     }
 
-    private boolean dansLimites (int x , int y ){// oki
-        return y>=0 && y < plateau.length && x >0 && x < plateau[0].length ; 
+    public Domino getCase (int x , int y) {
+        return plateau[y][x] ; 
     }
     
     public boolean peutPoser (int x , int y , Domino dom) {// oki
@@ -91,7 +99,7 @@ public class Plateau {
 
     public void pose (int x , int y , Domino dom) {
         plateau[y][x] = dom ; 
-        dominoPresentInLine[y] = true ; 
+        ligneNonVide[y] = true ; 
     }
 
     public int nbPtsScored (int x , int y , Domino dom) {// fonctioon a deplacer dans domino
@@ -101,7 +109,7 @@ public class Plateau {
                 total += sommeTab(dom, 2*i) ; 
             }
             
-            if (!dansLimites(x+1-2*i, y) && plateau[x+1-2*i][y] != null) {
+            if (dansLimites(x+1-2*i, y) && plateau[x+1-2*i][y] != null) {
                 total += sommeTab(dom, 2*i+1) ; 
             }
         }
@@ -118,8 +126,8 @@ public class Plateau {
 
     public String toString () {
         String res = "" ; 
-        for (int i = 0 ; i<dominoPresentInLine.length ; i++) {
-            if (dominoPresentInLine[i]) {
+        for (int i = 0 ; i<ligneNonVide.length ; i++) {
+            if (ligneNonVide[i]) {
                 res+= printLine(i) ; 
             }
         }
