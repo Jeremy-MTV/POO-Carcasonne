@@ -79,10 +79,27 @@ public class Domino {
         sac[place+1] = b;
     }
     
-    public String toString (int i) { //ligne par ligne
-        //pour i=1 ou 5, espace à 1 et 4
-        return null;
+    public String toString (int i) { //ligne par ligne 
+            switch(i){
+                case 1 : return "* " + this.faces[1][1] + " " + this.faces[1][2] + " " + this.faces[1][3] + " *"; //pour la ligne 1 du domino
+
+                case 2 : return this.faces[4][1] + " * * * " + this.faces[2][1]; 
+
+                case 3 : return this.faces[4][2] + " * * * " + this.faces[2][2];
+
+                case 4 : return this.faces[4][3] + " * * * " + this.faces[2][3];
+
+                case 5 : return "* " + this.faces[3][1] + " " + this.faces[3][2] + " " + this.faces[3][3] + " *";
+
+                default : return null;
+            }
     }
+
+    //  * 1 2 3 *   Ligne 1
+    //  1 * * * 1
+    //  2 * * * 2
+    //  3 * * * 3
+    //  * 1 2 3 *   Ligne 5
 
     public static String toStringVide () {// oki
         return " ".repeat(5) ;  
