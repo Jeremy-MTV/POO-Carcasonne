@@ -1,7 +1,7 @@
 public abstract class Joueur{
     private Plateau plateau;
     private Domino domino ; 
-    private boolean apioche, abandonne;
+    private boolean abandonne;
     private int nbPoints;
     private int id ; 
 
@@ -39,9 +39,6 @@ public abstract class Joueur{
         this.domino = plateau.pioche() ; 
     }
 
-    public boolean getApioche() {// oki
-        return apioche;
-    }
 
     public int getNbPoints () {// oki
         return nbPoints ; 
@@ -57,6 +54,14 @@ public abstract class Joueur{
 
     public void abandonne () {
         abandonne = true ; 
+    }
+
+    public String toString () {
+        String res = "" ; 
+        for (int i = 0 ; i<5 ; i++) {
+            res += domino.toString(i)+"\n" ; 
+        }
+        return res ; 
     }
 
     public abstract void play() ; 

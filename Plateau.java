@@ -2,21 +2,28 @@ import java.util.Random;
 
 public class Plateau {
     private Domino[][] plateau ; 
-    private boolean[] ligneNonVide ; 
+    int [] limite ;  
     private Domino [] sac ;
 
     Plateau () {
         this.plateau = new Domino[80][80] ; 
-        ligneNonVide = new boolean[80] ; 
+        limite = new int [4] ; 
+        // x0 y0 x1 y1 
         this.sac = Domino.genSac() ;
+        plateau[40][40] = pioche() ; 
+        limite[0] = 39 ;
+        limite[1] = 39 ; 
+        limite[2] = 41 ; 
+        limite[3] = 41 ;  
     }
 
-    public boolean[] getligneNonVide() {
-        return this.ligneNonVide ; 
-    }
 
     public Domino[][] getPlateau () {
         return plateau ; 
+    }
+
+    public int [] getLimite () {
+        return limite ; 
     }
 
     public Domino pioche () {
@@ -55,7 +62,7 @@ public class Plateau {
     }
     
     public boolean peutPoser (int x , int y , Domino dom) {// oki
-        if (!dansLimites(x, y)) return false ; 
+        if (!dansLimites(x, y) || plateau[y][x] != null) return false ; 
         boolean [] adja = {false , false , false , false} ; 
         //               haut(0)  droite(1) bas(2) gauche(3)
         int nbNulls = 0 ;
@@ -67,7 +74,7 @@ public class Plateau {
                     nbNulls++ ;
                     adja[2*i] = true ; 
                 }else{
-                    adja[2*i] = possible(dom, plateau[x][y-1+2*i], 2*i) ; 
+                    adja[2*i] = dom.possible(plateau[x][y-1+2*i], 2*i) ; 
                 }
             }else{
                 adja[2*i] = true ; 
@@ -79,7 +86,7 @@ public class Plateau {
                     nbNulls++ ; 
                     adja[2*i+1] = true ; 
                 }else{
-                    adja[2*i+1] = possible(dom, plateau[x+1-2*i][y], 2*i+1) ; 
+                    adja[2*i+1] = dom.possible(plateau[x+1-2*i][y], 2*i+1) ; 
                 }
             }else{
                 adja[2*i+1] = true ;  
@@ -88,18 +95,12 @@ public class Plateau {
         return adja[0] && adja[1] && adja[2] && adja[3] && nbNulls != 4 ; 
     }
 
-    private boolean possible (Domino domJ , Domino domP , int face) {// fonction a deplacer dans domino
-        int [][] facesJ = domJ.getFaces() ; 
-        int [][] facesP = domP.getFaces() ; 
-        for (int i = 0 ; i<facesJ.length ; i++) {
-            if (facesJ[face][i] != facesP[face][i]) return false ; 
-        }
-        return true ; 
-    }
-
     public void pose (int x , int y , Domino dom) {
         plateau[y][x] = dom ; 
-        ligneNonVide[y] = true ; 
+        limite[0] = (limite[0]<x)?limite[0]:x-1 ; 
+        limite[1] = (limite[1]<y)?limite[1]:y-1 ; 
+        limite[2] = (limite[2]>x)?limite[2]:x+1 ; 
+        limite[3] = (limite[3]<y)?limite[3]:y+1 ; 
     }
 
     public int nbPtsScored (int x , int y , Domino dom) {// fonctioon a deplacer dans domino
@@ -126,22 +127,20 @@ public class Plateau {
 
     public String toString () {
         String res = "" ; 
-        for (int i = 0 ; i<ligneNonVide.length ; i++) {
-            if (ligneNonVide[i]) {
-                res+= printLine(i) ; 
-            }
+        for (int i = limite[1]+1 ; i<limite[3] ; i++) {
+            res+= printLine(i)+"\n" ; 
         }
         return res ; 
     }
 
     private String printLine (int line) {
         String res = "" ; 
-        for (int i = 0 ; i<4 ; i++) {
-            for (int k = 0 ; k<plateau[line].length ; k++) {
+        for (int i = 0 ; i<5 ; i++) {
+            for (int k = limite[0]+1 ; k<limite[2] ; k++) {
                 if (plateau[line][k] == null) {
-                    res+= Domino.toStringVide() ; 
+                    res+= Domino.toStringVide() + " "; 
                 }else{
-                    res+= plateau[line][k].toString(i) ; 
+                    res+= plateau[line][k].toString(i) + " " ; 
                 }
             }
             res+="\n" ; 

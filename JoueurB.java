@@ -5,26 +5,27 @@ public class JoueurB extends Joueur {
     }
 
     @Override
+    public String toString() {
+        return "" ; 
+    }
+
+    @Override
     public void play() {
         pioche();
-        boolean [] ligneNonVide = getPlateau().getligneNonVide() ; 
-        Domino[][]plateau = getPlateau().getPlateau() ; 
+        int [] limite = getPlateau().getLimite() ; 
         boolean posePossible = false ; 
         int maxPts = 0 ; 
         int [] pos = {0,0} ; // (x;y)
-        for (int i = 0 ; i<ligneNonVide.length ; i++) {
-            if (ligneNonVide[i]) {
-                for (int k = 0 ; k<plateau[i].length ; k++) {
-                    /*
-                     * Test if possible de poser domino aux pos (k,i)
-                     * If (true) {
-                     *      on change posePossible a true
-                     *      on compte le nombre de points que sa marque
-                     *      si c'est plus grand que maxPts
-                     *      on met a jour maxPts
-                     *      on met a jour int [] pos avec les new pos  
-                     * }
-                     */
+        int pts ; 
+        for (int i = limite[1] ; i<=limite[3] ; i++) {
+            for (int k = limite[0] ; k<=limite[2] ; k++) {
+                if (getPlateau().peutPoser(k, i, getDomino())) {
+                    pts = getPlateau().nbPtsScored(k, i, getDomino());
+                    if (maxPts <pts ) {
+                        pos[0] = k ; 
+                        pos[1] = i ; 
+                        maxPts = pts ; 
+                    }
                 }
             }
         }
@@ -33,6 +34,6 @@ public class JoueurB extends Joueur {
             return ; 
         }
         getPlateau().pose(pos[0], pos[1], getDomino());
-        
+        addPoints(maxPts);
     }
 }

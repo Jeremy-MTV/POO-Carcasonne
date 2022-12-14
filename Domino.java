@@ -111,4 +111,8 @@ public class Domino {
     public static String toStringVide () {// oki
         return " ".repeat(5) ;  
     }
+
+    public boolean possible(Domino domino, int i) {
+        return false;
+    }
 }
