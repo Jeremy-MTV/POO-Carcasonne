@@ -3,9 +3,7 @@ import java.util.*;
 public class Start{
     
     public static void main(String[] args){
-        Plateau main = new Plateau();
-        int tourN;
-        int nbTour;
+        Plateau plateau = new Plateau();
         int nbBot;
         Joueur[] joueurs;
 
@@ -36,29 +34,9 @@ public class Start{
             joueurs[k] = new JoueurB();
         }
 
-        System.out.println();
-        System.out.println("Combien de tour voulez-vous ? (5 tours minimum)");
-        if(!sc.nextLine().isEmpty()){
-            tourN = Integer.parseInt(sc.nextLine());
-            while(tourN < 5){
-                System.out.println();
-                System.out.println("Veuillez choisir un nombre plus grand ou égal à 5");
-                System.out.println();
-                System.out.println("Combien de tour voulez-vous ? (5 tours minimum)");    
-                tourN = Integer.parseInt(sc.nextLine());
-            }
-            nbTour = tourN;
-        }else{
-            while(sc.nextLine().isEmpty()){
-                System.out.println();
-                System.out.println("Valeur incorrecte");    
-                System.out.println();
-                System.out.println("Combien de tour voulez-vous ? (5 tours minimum)");    
-                tourN = Integer.parseInt(sc.nextLine());
-                nbTour = tourN;
-            }
+        while(!plateau.finDeGame()){
+            
         }
-        
     }
 
 

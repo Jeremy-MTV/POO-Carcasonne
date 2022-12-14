@@ -6,10 +6,10 @@ public class Plateau {
 
     Plateau () {
         this.plateau = new Domino[40][40] ; 
-        this.sac = Domino.genSac() ; //genSac va générer 40 dominos par defaut qui seront dans le sac
+        this.sac = TuileD.genSac() ; //genSac va générer 40 dominos par defaut qui seront dans le sac
     }
 
-    public Domino pioche () {
+    public Domino pioche () {               
         int pos = (new Random()).nextInt(40) ; 
         Domino pioche = sac[pos] ; 
         sac[pos] = null ; 
