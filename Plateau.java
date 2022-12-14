@@ -26,8 +26,9 @@ public class Plateau {
         return limite ; 
     }
 
-    public Domino pioche () {
-        int pos = (new Random()).nextInt(lastDomino(0, sac.length)+1) ; 
+   
+    public Domino pioche () {               
+        int pos = (new Random()).nextInt(40) ; 
         Domino pioche = sac[pos] ; 
         sac[pos] = null ; 
         arrange(sac, pos);
