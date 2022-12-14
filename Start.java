@@ -35,7 +35,7 @@ public class Start{
         }
 
         while(!plateau.finDeGame()){
-            
+            //a finir 
         }
     }
 
