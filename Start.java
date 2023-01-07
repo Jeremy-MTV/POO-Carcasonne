@@ -1,44 +1,54 @@
+
+import java.io.IOException;
 import java.util.Scanner;
 
-public class Start{
-    
-    public static void main(String[] args){
-        Plateau plateau = new Plateau();
-        int nbBot;
-        Joueur[] joueurs;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
+import Src.StartTerminal;
+import Src.Menus.Menu;
 
-        System.out.println("DOMINO - by Jay and Samy");
-        System.out.println();
-        System.out.println("Bienvenue sur notre Domino ! \n Avant de commencer à jouer, vous allez devoir choisir le nombre de joueur et le nombre de bot pour votre partie \n Puis, vous allez devoir choisir le nombre de tour que vous voulez effectué (avec un minimum de 5 tours)");
-        System.out.println();
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Choisissez le nombre de Joueur");
-        int nbJoueur = Integer.parseInt(sc.nextLine());
-        joueurs = new Joueur[nbJoueur];
-        
-        System.out.println();
-        System.out.println("Choissisez le nombre de Bot parmi les Joueurs");
-        nbBot = Integer.parseInt(sc.nextLine());
-        while(nbBot < nbJoueur || nbBot > nbJoueur){
-            System.out.println("Le nombre de bot doit être parmis le nombre de joueur, il ne peut être supérieur ou inférieur");
-            System.out.println("Saisissez un nombre correct : ");
-            nbBot = Integer.parseInt(sc.nextLine());
-        }
-
-        for(int j=0; j<nbJoueur-nbBot; j++){
-            joueurs[j] = new Joueur();
-        }
-        for(int k=nbJoueur-nbBot; k<nbJoueur; k++){
-            joueurs[k] = new JoueurB();
-        }
-
-        while(!plateau.finDeGame()){
-            //a finir 
-        }
+public class Start {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in) ; 
+        System.out.println("Bienvenue dans notre Jeu Domino & Carcasonne ! Azul Fell-Awen Ansuf Yis-Wen !");
+        System.out.println("Pour Jouer au jeu Domino sur le terminal, Veuillez Entrer : Domino_Terminal");
+        System.out.println("Sinon, Entrez : Lancer_Jeu");
+        System.out.println("Si vous voulez quitter : Exit");
+        String rep = "" ; 
+        do {
+            rep = sc.next() ; 
+            switch(rep) {
+                case "Domino_Terminal" :
+                    System.out.println("Compris ! Qu'il en soit ainsi !\n\n");
+                    StartTerminal.start();
+                break ; 
+                
+                case "Lancer_Jeu" :
+                    System.out.println("Compris ! Qu'il en soit ainsi !\n\n");
+                    try {
+                        @SuppressWarnings("unused") 
+                        Menu menu = new Menu() ;
+                    } catch (UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (LineUnavailableException e) {
+                        e.printStackTrace();
+                    } 
+                break ;   
+                
+                case "Exit" :
+                    System.out.println("Vous nous quittez déjà ://\nBon , A Bientot , Ar Timlilit !");
+                    System.exit(0);
+                break ; 
+                
+                default :
+                    System.out.println("Pardon , je n'ai pas bien compris votre demande !");
+                    rep = "" ; 
+                break ; 
+            }
+        } while (rep.isEmpty());
+        sc.close();
     }
-
-
 }
-

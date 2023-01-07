@@ -1,0 +1,17 @@
+Pour pouvoir lancer les deux jeux depuis un Terminal il faut compiler et executer le fichier
+Vous suiverez les insctructions indiquées une fois Start lancé
+Start.java
+faire : javac Start.java puis java Start
+
+Pour lancer le jeu Domino sur le terminal directement il faut compiler et executer le fichier 
+StartTerminal.java
+Faire : javac StartTerminal.java puis java StartTerminal
+
+Pour lancer notre application il faut compiler et executer le fichier
+Menu.java
+Faire : javac Menu.java puis java Menu
+
+Vous Trouverez ces deux Fichiers dans le Dossier Src !
+Voici leur deux chemins Relatifs :
+    Src/StartTerminal.java
+    Src/Menus/Menu.java
